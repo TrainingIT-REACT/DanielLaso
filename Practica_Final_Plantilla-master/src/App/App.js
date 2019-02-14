@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 
 // Css
 import './App.css';
-import './bootstrap.min.css';
 //Components
 import Formulario from "./form"
 
