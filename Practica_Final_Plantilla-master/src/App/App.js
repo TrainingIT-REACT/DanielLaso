@@ -7,7 +7,15 @@ import './App.css';
 //Components
 import Home from "./home"
 import Albums from "./albums"
-import Form from "./form"
+import Login from "./login"
+import Perfil from "./perfil"
+import UserContext from './contexts/user';
+
+
+// Componente para definir rutas privadas
+import PrivateRoute from './PrivateRoute';
+
+
 
 class App extends Component {
   constructor(props) {
@@ -17,7 +25,29 @@ class App extends Component {
       loading: true,
       albums: []
     }
+
+
+
+super(props);
+
+    // Bind de los métodos
+    this.updateUser = this.updateUser.bind(this);
+
+    this.state = {
+      signedIn: false,
+      updateUser: this.updateUser,
+    }
+
+
+
+
   }
+
+  updateUser(signedIn) {
+    this.setState(() => ({ signedIn }));
+  }
+
+
 
   async componentDidMount() {
     try {
@@ -37,30 +67,35 @@ class App extends Component {
     return (
       <div className="App">
         <Router>
-          <div className="App container">
-            <p>
-              <div className="row justify-content-between">
-              <div className="col-12">
-                  <ul className="nav justify-content-center">
-                    <li classNamenav-link="nav-item"><NavLink className="nav-link" exact activeClassName="active" to="/">Inicio</NavLink></li>
-                      {' '}
-                    <li classNamenav-link="nav-item"><NavLink className="nav-link" activeClassName="active" to="/albums">Albums</NavLink></li>
-                    <li classNamenav-link="nav-item"><NavLink className="nav-link" activeClassName="active" to="/reproductor">Reproductor</NavLink></li>
+           <UserContext.Provider value={this.state}>
+              <div className="App container">
+                <p>
+                  <div className="row justify-content-between">
+                  <div className="col-12">
+                      <ul className="nav justify-content-center">
+                        <li classNamenav-link="nav-item"><NavLink className="nav-link" exact activeClassName="active" to="/">Inicio</NavLink></li>
+                          {' '}
+                        <li classNamenav-link="nav-item"><NavLink className="nav-link" activeClassName="active" to="/albums">Albums</NavLink></li>
+                        <li classNamenav-link="nav-item"><NavLink className="nav-link" activeClassName="active" to="/reproductor">Reproductor</NavLink></li>
 
-                    <li classNamenav-link="nav-item">
-                      <NavLink className="nav-link" activeClassName="active" to="/login">Login</NavLink>
-                    </li>
-                  </ul>
-                 
+                        <li classNamenav-link="nav-item">
+                          <NavLink className="nav-link" activeClassName="active" to="/login">Login</NavLink>
+                        </li>
+                        <li classNamenav-link="nav-item">
+                          <NavLink className="nav-link" activeClassName="active" to="/Perfil">Perfil</NavLink>
+                        </li>
+                      </ul>
+                    
+                  </div>
+                </div>
+                </p>
+                <hr />
+                <Route path="/" exact component={Home} />
+                <Route path="/albums" component={Albums} />
+                <Route path="/login" component={Login} />
+                <PrivateRoute path="/perfil" component={Perfil} />
               </div>
-            </div>
-            </p>
-            <hr />
-            <Route path="/" exact component={Home} />
-            <Route path="/albums" component={Albums} />
-            <Route path="/login" component={Form} />
-          </div>
-          
+           </UserContext.Provider>
         </Router>
       </div>
     );
