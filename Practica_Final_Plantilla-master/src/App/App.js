@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
+import ReactDOM from "react-dom";
+import { BrowserRouter as Router, Route, NavLink } from "react-router-dom";
 
 // Css
 import './App.css';
 //Components
-import Formulario from "./form"
+import Home from "./home"
+import Albums from "./albums"
 
 class App extends Component {
   constructor(props) {
@@ -32,7 +35,19 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Formulario />
+        <Router>
+          <div className="App container">
+            <p>
+              <NavLink exact activeClassName="active" to="/">Inicio</NavLink>
+              {' '}
+              <NavLink activeClassName="active" to="/albums">Albums</NavLink>
+            </p>
+            <hr />
+            <Route path="/" exact component={Home} />
+            <Route path="/albums" component={Albums} />
+          </div>
+          
+        </Router>
       </div>
     );
   }
