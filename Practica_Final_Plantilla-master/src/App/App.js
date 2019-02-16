@@ -7,6 +7,7 @@ import './App.css';
 //Components
 import Home from "./home"
 import Albums from "./albums"
+import Form from "./form"
 
 class App extends Component {
   constructor(props) {
@@ -38,13 +39,26 @@ class App extends Component {
         <Router>
           <div className="App container">
             <p>
-              <NavLink exact activeClassName="active" to="/">Inicio</NavLink>
-              {' '}
-              <NavLink activeClassName="active" to="/albums">Albums</NavLink>
+              <div className="row justify-content-between">
+              <div className="col-12">
+                  <ul className="nav justify-content-center">
+                    <li classNamenav-link="nav-item"><NavLink className="nav-link" exact activeClassName="active" to="/">Inicio</NavLink></li>
+                      {' '}
+                    <li classNamenav-link="nav-item"><NavLink className="nav-link" activeClassName="active" to="/albums">Albums</NavLink></li>
+                    <li classNamenav-link="nav-item"><NavLink className="nav-link" activeClassName="active" to="/reproductor">Reproductor</NavLink></li>
+
+                    <li classNamenav-link="nav-item">
+                      <NavLink className="nav-link" activeClassName="active" to="/login">Login</NavLink>
+                    </li>
+                  </ul>
+                 
+              </div>
+            </div>
             </p>
             <hr />
             <Route path="/" exact component={Home} />
             <Route path="/albums" component={Albums} />
+            <Route path="/login" component={Form} />
           </div>
           
         </Router>

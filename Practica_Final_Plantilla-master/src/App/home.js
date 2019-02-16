@@ -6,7 +6,7 @@ class Home extends React.Component {
             <div>
                 <div className="row">
                     <div className="col-12">
-                        <h1>WELCOME TO REACT APP!</h1>
+                        <h1>WELCOME TO REACTIFY APP!</h1>
                     </div>
                 </div>
             </div>
