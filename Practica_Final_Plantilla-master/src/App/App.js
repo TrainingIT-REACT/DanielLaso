@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import ReactDOM from "react-dom";
 import { BrowserRouter as Router, Route, NavLink } from "react-router-dom";
 
 // Css
@@ -93,7 +92,8 @@ super(props);
                 <Route path="/" exact component={Home} />
                 <Route path="/albums" component={Albums} />
                 <Route path="/login" component={Login} />
-                <PrivateRoute path="/perfil" component={Perfil} />
+                {/* <PrivateRoute path="/perfil" component={Perfil} /> */}
+                <Route path="/perfil" component={Perfil} />
               </div>
            </UserContext.Provider>
         </Router>

@@ -2,7 +2,6 @@ import React from 'react';
 
 // Contexto de usuario
 import UserContext from './contexts/user';
-import Perfil from './perfil';
 
 // Este componente utiliza el parámetro para mostrarlo en la interfaz
 const Login = ({ location }) => {
@@ -10,7 +9,7 @@ const Login = ({ location }) => {
     {({ signedIn, updateUser }) => {
       return <div>
         { signedIn ? (
-          <Perfil />
+          <p>OK!</p>
         ) : (
           <>
             <div className="form-group">
