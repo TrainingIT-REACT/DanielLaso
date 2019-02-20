@@ -2,7 +2,12 @@
 const actions = [
   // Usuarios
   "UPDATE_NAME",
-  "UPDATE_AGE"
+  "UPDATE_AGE",
+
+  //ALBUMS
+  "POSTS_LOADING",
+  "POSTS_ERROR",
+  "POSTS_LOADED"
 ];
 
 // Las convertimos en un objeto

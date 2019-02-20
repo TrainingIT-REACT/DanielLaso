@@ -1,18 +1,46 @@
 import React from 'react';
+import { connect } from 'react-redux';
+
+// Acciones
+import { getPosts } from './actions/posts';
+
+// Componentes
+import Album from './album';
 
 class Albums extends React.Component {
-    render() {
-        return (
-            <div className="card-columns">
-                <div className="card">
-                    <img src="..." className="card-img-top" alt="..." />
-                    <div className="card-body">
-                        <h5 className="card-title">Card title that wraps to a new line</h5>
-                        <p className="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                    </div>
-                </div>
-            </div>
-        );
+  componentDidMount() {
+    this.props.getPosts();
+  }
+
+  renderArticles() {
+    const { isLoading, error, posts } = this.props;
+
+    if (isLoading) {
+      return <p>Cargando...</p>
+    } else if (error) {
+      return <p>Hubo un error al obtener los datos :(</p>
+    } else {
+      return <Album posts={posts}/>
     }
+  }
+
+  render() {
+    return <>
+      <p>Albums:</p>
+      { this.renderArticles() }
+    </>
+  }
 }
-export default Albums;
+
+const mapStateToProps = (state) => ({
+  ...state
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  getPosts: () => dispatch(getPosts()),
+})
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Albums);

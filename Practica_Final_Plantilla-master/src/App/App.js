@@ -5,7 +5,7 @@ import { BrowserRouter as Router, Route, NavLink } from "react-router-dom";
 import './App.css';
 //Components
 import Home from "./home"
-import Albums from "./albums"
+import AlbumList from "./albumList"
 import Login from "./login"
 import Perfil from "./perfil"
 import UserContext from './contexts/user';
@@ -90,7 +90,7 @@ super(props);
                 </p>
                 <hr />
                 <Route path="/" exact component={Home} />
-                <Route path="/albums" component={Albums} />
+                <Route path="/albums" component={AlbumList} />
                 <Route path="/login" component={Login} />
                 {/* <PrivateRoute path="/perfil" component={Perfil} /> */}
                 <Route path="/perfil" component={Perfil} />
