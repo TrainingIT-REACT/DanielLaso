@@ -1,16 +1,13 @@
-import { createStore, applyMiddleware } from "redux";
+import { createStore, combineReducers, applyMiddleware } from "redux";
 import thunk from 'redux-thunk';
-
-
 // Reducers
 import user from './reducers/user';
 import posts from './reducers/posts';
-
-// export default createStore(combineReducers({ user }));
+// Creamos el Store
 export default createStore(
-    posts,
+    combineReducers({
+        user,
+        posts
+    }),
     applyMiddleware(thunk),
 );
-
-
-
