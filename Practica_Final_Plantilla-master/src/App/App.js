@@ -6,6 +6,7 @@ import './App.css';
 //Components
 import Home from "./home"
 import AlbumList from "./albumList"
+import SongList from "./songsList"
 import Login from "./login"
 import Perfil from "./perfil"
 import UserContext from './contexts/user';
@@ -91,9 +92,10 @@ super(props);
                 <hr />
                 <Route path="/" exact component={Home} />
                 <Route path="/albums" component={AlbumList} />
+              <Route path="/reproductor" component={SongList} />
                 <Route path="/login" component={Login} />
-                {/* <PrivateRoute path="/perfil" component={Perfil} /> */}
-                <Route path="/perfil" component={Perfil} />
+                <PrivateRoute path="/perfil" component={Perfil} /> 
+                
               </div>
            </UserContext.Provider>
         </Router>

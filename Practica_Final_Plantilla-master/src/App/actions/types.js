@@ -7,7 +7,12 @@ const actions = [
   //ALBUMS
   "POSTS_LOADING",
   "POSTS_ERROR",
-  "POSTS_LOADED"
+  "POSTS_LOADED",
+
+  //SONG
+  "SONGS_LOADING",
+  "SONGS_ERROR",
+  "SONGS_LOADED",
 ];
 
 // Las convertimos en un objeto

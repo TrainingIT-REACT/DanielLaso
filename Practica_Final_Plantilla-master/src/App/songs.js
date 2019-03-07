@@ -2,46 +2,46 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 // Acciones
-import { getPosts } from './actions/posts';
+import { getSongs } from './actions/songs';
 
 // Componentes
-import Album from './album';
+import Song from './song';
 
-class Albums extends React.Component {
+class Songs extends React.Component {
   componentDidMount() {
-    this.props.getPosts();
+    this.props.getSongs();
   }
 
   renderArticles() {
-    const { isLoading, error, posts } = this.props;
+    const { isLoading, error, songs } = this.props;
 
     if (isLoading) {
       return <p>Cargando...</p>
     } else if (error) {
       return <p>Hubo un error al obtener los datos :(</p>
     } else {
-      return <Album posts={posts}/>
+      return <Song songs={songs}/>
     }
   }
 
   render() {
     return <>
-      <p>Albums:</p>
+      <p>Canciones:</p>
       { this.renderArticles() }
     </>
   }
 }
 
-const mapStateToProps = ({ posts }) => ({
-  ...posts
+const mapStateToProps = ({ songs }) => ({
+  ...songs
 });
 
 
 const mapDispatchToProps = (dispatch) => ({
-  getPosts: () => dispatch(getPosts()),
+  getSongs: () => dispatch(getSongs()),
 })
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(Albums);
+)(Songs);
